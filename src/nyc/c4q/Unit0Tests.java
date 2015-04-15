@@ -22,14 +22,16 @@ public class Unit0Tests {
         printSumOf1Upto10000UsingForLoop();
         System.out.println(isOdd(30));
         System.out.println(isOddAndIsMultipleOfThree(99));
-        repeatStringXTimes("potato", 5);
-        returnStringUntilQ("shaniqua");
+        System.out.println(repeatStringXTimes("potato", 5));
+        System.out.println(returnStringUntilQ("anoyiqua"));
         System.out.println(declareAndReturnPersonNamedAda());
         System.out.println(declareAndReturnPersonNamedAlanTuringFromLondon());
         System.out.println(isFromLondon(declareAndReturnPersonNamedAlanTuringFromLondon()));
         System.out.println(declareAndReturnArrayListOfThreePlaces());
         System.out.println(declareAndReturnHashmapOfAlanTuringAndGraceHopper());
         changeTuringsCityToPrinceton(declareAndReturnHashmapOfAlanTuringAndGraceHopper());
+        bonusPrintOutSumOfFirstTenFibonacciNumbers();
+        bonusPrintOutSumOfFirstFortyFibonacciNumbers();
     }
 
     public static void printHelloWorld() {
@@ -49,13 +51,12 @@ public class Unit0Tests {
     }
 
     public static char returnPrimitiveCharZ() {
-        return 'z';
+        return 'Z';
     }
 
     public static void printSumOf1Upto10UsingForLoop() {
         int sum = 0;
         for(int i = 1; i < 10; i++) {
-            System.out.println(i);
             sum += i;
         }
         System.out.println(sum);
@@ -64,8 +65,7 @@ public class Unit0Tests {
 
     public static void printSumOf1Upto10000UsingForLoop() {
         int sum = 0;
-        for(int i = 1; i < 1000; i++) {
-            System.out.println(i);
+        for(int i = 1; i < 10000; i++) {
             sum += i;
         }
         System.out.println(sum);
@@ -82,7 +82,7 @@ public class Unit0Tests {
 
     public static boolean isMultipleOfThree(int n) {
 
-        if (n % 3 != 0) {
+        if (n % 3 == 0) {
             return true;
         } else {
             return false;
@@ -91,7 +91,7 @@ public class Unit0Tests {
 
     public static boolean isOddAndIsMultipleOfThree(int n) {
 
-        if (n % 3 != 0 && n % 2 != 0)
+        if (n % 3 == 0 && n % 2 != 0)
         {
             return true;
         } else {
@@ -105,36 +105,57 @@ public class Unit0Tests {
         // If "times" is 0 negative, return a blank string.
         // For example, repeatStringXTimes("potato", 5) should return "potatopotatopotatopotatopotato".
 
-        if (times == 0 || times < 0) {
-            System.out.println("");
-        }
+        String str = "";
 
-        for (int i = 0; i < times; i++) {
-            System.out.print(input);
-        }
-        System.out.println("");
+       if (times > 0)
+       {
 
-
-        return "";
+           for(int i = 0; i < times; i++)
+           {
+               str += input;
+           }
+           return str;
+       } else
+       {
+           return str;
+       }
     }
 
-    public static String returnStringUntilQ(String input) {
+    public static String returnStringUntilQ(String input)
+    {
         // Given string "input", return a string that stops at the first occurrence of the character 'q'.
         // For example, given the string "ubiquitous", return "ubi".
         // If the string does not contain a q, then return the empty string "".
 
-        for (int i = 0; i < input.length(); i++) {
-           if (input.charAt(i) == 'q')
-           {
-               break;
-           } else {
-               System.out.print(input.charAt(i));;
-           }
-        }
-        System.out.println("");
+        String str = "";
 
-        return "";
+        if(input.contains("q"))
+        {
+            for(int i = 0; i < input.length(); i++)
+            {
+                if(input.charAt(i) == 'q')
+                {
+                    break;
+                }
+                else
+                {
+                    str += input.charAt(i);
+
+                }
+
+            }
+
+            return str;
+        }
+        else
+        {
+            return str;
+
+
+        }
     }
+
+
 
     public static Person declareAndReturnPersonNamedAda() {
       Person ada = new Person("Ada");
@@ -143,7 +164,7 @@ public class Unit0Tests {
     }
 
     public static Person declareAndReturnPersonNamedAlanTuringFromLondon() {
-      Person alan = new Person("Alan");
+      Person alan = new Person("Alan Turing");
         alan.setCity("London");
 
         return alan;
@@ -180,8 +201,8 @@ public class Unit0Tests {
 
         HashMap<String, Person> peoples = new HashMap<String, Person>();
 
-        Person alanTuring = new Person();
-        Person graceHopper = new Person();
+        Person alanTuring = new Person("Alan Turing");
+        Person graceHopper = new Person("Grace Hopper");
 
         peoples.put("Alan Turing", alanTuring);
         peoples.get("Alan Turing").setCity("London");
@@ -197,10 +218,39 @@ public class Unit0Tests {
 
     // Bonus Problems
     public static void bonusPrintOutSumOfFirstTenFibonacciNumbers() {
+        int first = 1;
+        int next = 1;
+        int sum = first + next;
+
+
+        for (int i = 0; i < 9; i++)
+        {
+            sum = first + next;
+            first = next;
+            next = sum;
+        }
+
+        System.out.println(sum);
+
+
 
     }
 
     public static void bonusPrintOutSumOfFirstFortyFibonacciNumbers() {
+        int first = 1;
+        int next = 1;
+        int sum = first + next;
+
+
+        for (int i = 0; i < 39; i++)
+        {
+            sum = first + next;
+            first = next;
+            next = sum;
+        }
+
+        System.out.println(sum);
+
 
     }
 }
